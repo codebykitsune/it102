@@ -17,13 +17,13 @@ Begin
 4. Use a random method to decides one choice for computer. - save the computer's choice in a variable: "npcChoice"
    
 5. Check if the user lose, draw, or win.And store your result into a variable "result"
-   - If ("yourChoice" == Rock and "npcChoice" == Scissors) OR 
-  ("yourChoice" == Scissors and "npcChoice" == Paper) OR 
-  ("yourChoice" == Paper and "npcChoice" == Rock) then "result" ="win"
-   - else if "yourChoice" == "npcChoice", then "result" = "draw"
-   - else, "result" = "lose"
+   - If ("yourChoice" == "Rock" and "npcChoice" == "Scissors") OR 
+  ("yourChoice" == "Scissors" and "npcChoice" == "Paper") OR 
+  ("yourChoice" == "Paper" and "npcChoice" == "Rock") then "result" ="win"
+   - Else if "yourChoice" == "npcChoice", then "result" = "draw"
+   - Else, "result" = "lose"
 
-1. show your result
-   - show "yourchoice", "npcChoice" and "result"
+6. Display your result
+   - Show "yourchoice", "npcChoice" and "result"
 
 End
