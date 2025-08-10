@@ -24,6 +24,6 @@ Begin
    - else, "result" = "lose"
 
 6. show your result
-   -show "yourchoice", "npcChoice" and "result"
+   - show "yourchoice", "npcChoice" and "result"
 
 End
