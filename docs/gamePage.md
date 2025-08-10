@@ -1,33 +1,29 @@
 # this is pseudocodes about Rock Paper Scissors Game.
 
 Begin
+1. Make variables:Rock Paper Scissors
+   - "choices" = ["Rock", "Paper", "Scissors"]
+   - "yourChoice" = User's input (Rock Paper Scissors)
+   - "npcChoice" = Randomly selected choice from choices
+   - "result" = output of the game
+   
+2. Rules:
+    - Rock is stronger than Scissors
+    - Scissors is stronger than Paper
+    - Paper is stronger than Rock
+  
+3. Ask the user to select one:Rock Paper Scissors. - save the user's choice in a variable: "Yourchoice"
 
-make variables:Rock Paper Scissors
-make rules below
-Rock is stronger than Scissors
-Scissors is stronger than Paper
-Paper is stronger than Rock
+4. Use a random method to decides one choice for computer. - save the computer's choice in a variable: "npcChoice"
+   
+5. Check if the user lose, draw, or win.And store your result into a variable "result"
+   - if "yourChoice" == Rock and "npcChoice" == Scissors, then "result" == "win"
+   - else if "yourChoice" == Scissors and "npcChoice" == Paper, then "result" == "win"
+   - else if "yourChoice" == Paper and "npcChoice" == Rock, then "result" == "win"
+   - else if "yourChoice" == NPC choice, then "result" == "draw"
+   - else, "result" == "lose"
 
-if a user chose one of them:Rock Paper Scissors, 
-then insert the way into a variable:"Your choice"
-
-And random method decides the way amoung the three way,
-then insert the way into a variable:"NPC choice"
-
-#check if lose, draw, win
-
-if your choice is Rock and NPC choice is Scissors,
-then you win
-else if your choice is Scissors and NPC choice is Paper,
-then you win
-else if your choice is Paper and NPC choice is Rock,
-then you win
-else if your choice and NPC choice are the same, you are draw
-else
-you lose
-
-store your result into a variable "result"
-
-show your result 
+6. show your result
+   -show "yourchoice", "npcChoice" and "result"
 
 End
