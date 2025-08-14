@@ -2,16 +2,16 @@
 
 BEGIN
 
-  // 1. Define an object constructor.
-  // This object holds the player's choice and the result for one round.
-  
+    // 1. Define an object constructor.
+    // This object holds the player's choice and the result for one round.
+
   CONSTRUCTOR GameRound(playerChoice):
     this.playerChoice = playerChoice
     this.computerChoice = null
     this.result = null
   END CONSTRUCTOR
 
-  // 2. Start the main function.
+    // 2. Start the main function.
   FUNCTION main():
     // Set up the variables.
     DEFINE choices = ["Rock", "Paper", "Scissors"]
@@ -44,7 +44,7 @@ BEGIN
     
   END FUNCTION
 
-  // A separate function to decide the winner.
+    // A separate function to decide the winner.
   FUNCTION determineWinner(player, computer):
     IF player == computer THEN
       RETURN "draw"
@@ -57,7 +57,7 @@ BEGIN
     END IF
   END FUNCTION
 
-  // Call the main function to start the game.
+    // Call the main function to start the game.
   CALL main()
 
 END
