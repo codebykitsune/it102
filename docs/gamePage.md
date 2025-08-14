@@ -1,29 +1,63 @@
 # this is pseudocodes about Rock Paper Scissors Game.
 
-Begin
-1. Make variables:Rock Paper Scissors
-   - "choices" = ["Rock", "Paper", "Scissors"]
-   - "yourChoice" = User's input (Rock Paper Scissors)
-   - "npcChoice" = Randomly selected choice from choices
-   - "result" = output of the game
-   
-2. Rules:
-    - Rock is stronger than Scissors
-    - Scissors is stronger than Paper
-    - Paper is stronger than Rock
+BEGIN
+
+  // 1. Define an object constructor.
+  // This object holds the player's choice and the result for one round.
   
-3. Ask the user to select one:Rock Paper Scissors. - save the user's choice in a variable: "yourChoice"
+  CONSTRUCTOR GameRound(playerChoice):
+    this.playerChoice = playerChoice
+    this.computerChoice = null
+    this.result = null
+  END CONSTRUCTOR
 
-4. Use a random method to decides one choice for computer. - save the computer's choice in a variable: "npcChoice"
-   
-5. Check if the user lose, draw, or win.And store your result into a variable "result"
-   - If ("yourChoice" == "Rock" and "npcChoice" == "Scissors") OR 
-  ("yourChoice" == "Scissors" and "npcChoice" == "Paper") OR 
-  ("yourChoice" == "Paper" and "npcChoice" == "Rock") then "result" ="win"
-   - Else if "yourChoice" == "npcChoice", then "result" = "draw"
-   - Else, "result" = "lose"
+  // 2. Start the main function.
+  FUNCTION main():
+    // Set up the variables.
+    DEFINE choices = ["Rock", "Paper", "Scissors"]
+    DEFINE userChoice
 
-6. Display your result
-   - Show "yourchoice", "npcChoice" and "result"
+    // 3. Get a correct input from the user.
+    LOOP WHILE userChoice is not one of ("Rock", "Paper", "Scissors"):
+      DISPLAY "Enter Rock, Paper, or Scissors:"
+      GET userChoice from user
 
-End
+      // 4. Check if the input is correct.
+      IF userChoice is not one of ("Rock", "Paper", "Scissors") THEN
+        DISPLAY "Invalid input. Please try again."
+      END IF
+    END LOOP
+
+    // 5. Create a new round for the game.
+    DEFINE currentRound = NEW GameRound(userChoice)
+    
+    // Decide the computer's choice randomly.
+    currentRound.computerChoice = random choice from choices
+
+    // Call the function to check who won.
+    currentRound.result = determineWinner(currentRound.playerChoice, currentRound.computerChoice)
+
+    // 6. Show the result.
+    DISPLAY "You chose: " + currentRound.playerChoice
+    DISPLAY "Computer chose: " + currentRound.computerChoice
+    DISPLAY "Result: You " + currentRound.result + "!"
+    
+  END FUNCTION
+
+  // A separate function to decide the winner.
+  FUNCTION determineWinner(player, computer):
+    IF player == computer THEN
+      RETURN "draw"
+    ELSE IF (player == "Rock" AND computer == "Scissors") OR 
+            (player == "Scissors" AND computer == "Paper") OR 
+            (player == "Paper" AND computer == "Rock") THEN
+      RETURN "win"
+    ELSE
+      RETURN "lose"
+    END IF
+  END FUNCTION
+
+  // Call the main function to start the game.
+  CALL main()
+
+END
