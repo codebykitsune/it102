@@ -48,7 +48,7 @@
 </head>
 <body>
     <div class="game-container">
-        <h1>Rock, Paper, Scissors</h1>
+        <h1>Rock, Paper, Scissors Game</h1>
         <div class="choose">
             <p id="choose-text">Choose your move!</p>
         </div>
@@ -70,40 +70,49 @@
         </div>
     </div>
     <script>
-        //Define choices
-        const choices = ["rock", "paper", "scissors"];
+    // Define a class (object constructor) to hold data for each round.
+        class GameRound {
+            constructor(playerChoice) {
+                this.playerChoice = playerChoice;
+                this.computerChoice = this.getComputerChoice();
+                this.result = this.determineWinner();
+            }
 
-        //Function to determine the winner
-        function determineWinner(player, computer) {
-            if (player === computer) {
-                return "draw";
-            } else if (
-                (player === "rock" && computer === "scissors") ||
-                (player === "scissors" && computer === "paper") ||
-                (player === "paper" && computer === "rock")
-            ) {
-                return "win";
-            } else {
-                return "lose";
+            // Method to randomly decide the computer's choice.
+            getComputerChoice() {
+                const choices = ["rock", "paper", "scissors"];
+                return choices[Math.floor(Math.random() * choices.length)];
+            }
+
+            // Method to determine the winner.
+            determineWinner() {
+                if (this.playerChoice === this.computerChoice) {
+                    return "draw";
+                } else if (
+                    (this.playerChoice === "rock" && this.computerChoice === "scissors") ||
+                    (this.playerChoice === "scissors" && this.computerChoice === "paper") ||
+                    (this.playerChoice === "paper" && this.computerChoice === "rock")
+                ) {
+                    return "win";
+                } else {
+                    return "lose";
+                }
             }
         }
 
-        //Add event listener to the play button
+        // Add an event listener to the "Play" button.
         document.getElementById("play-button").addEventListener("click", function() {
-            //Get player's choice
-            const playerChoice = document.getElementById("player-choice").value;
+        // Get the player's choice from the dropdown.
+        const playerChoice = document.getElementById("player-choice").value;
 
-            //Randomly select computer's choice
-            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        // Create a new instance of the GameRound object.
+        const currentRound = new GameRound(playerChoice);
 
-            //Determine the result
-            const result = determineWinner(playerChoice, computerChoice);
-
-            //Display the results
-            document.getElementById("player-move").textContent = "You chose: " + playerChoice;
-            document.getElementById("computer-move").textContent = "Computer chose: " + computerChoice;
-            document.getElementById("game-result").textContent = "Result: You " + result + "!";
-        });
+        // Display the results by accessing the properties of the object.
+        document.getElementById("player-move").textContent = "You chose: " + currentRound.playerChoice;
+        document.getElementById("computer-move").textContent = "Computer chose: " + currentRound.computerChoice;
+        document.getElementById("game-result").textContent = "Result: You " + currentRound.result + "!";
+    });
     </script>
 </body>
 </html>
