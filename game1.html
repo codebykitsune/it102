@@ -5,7 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <style>
-        /* css */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .game-container {
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+        h1 {
+            color: #333;
+        }
+        .choose, .choices, .result {
+            margin: 20px 0;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result p {
+            font-size: 18px;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -16,15 +54,56 @@
         </div>
 
         <div class="choices">
-            <select>
+            <select id="player-choice">
                 <option value="rock">Rock</option>
                 <option value="paper">Paper</option>
                 <option value="scissors">Scissors</option>
             </select>
         </div>
+
+        <button id="play-button">Play</button>
+
+        <div class="result" id="result-container">
+            <p id="player-move"></p>
+            <p id="computer-move"></p>
+            <p id="game-result"></p>
+        </div>
     </div>
     <script>
+        //Define choices
+        const choices = ["rock", "paper", "scissors"];
 
+        //Function to determine the winner
+        function determineWinner(player, computer) {
+            if (player === computer) {
+                return "draw";
+            } else if (
+                (player === "rock" && computer === "scissors") ||
+                (player === "scissors" && computer === "paper") ||
+                (player === "paper" && computer === "rock")
+            ) {
+                return "win";
+            } else {
+                return "lose";
+            }
+        }
+
+        //Add event listener to the play button
+        document.getElementById("play-button").addEventListener("click", function() {
+            //Get player's choice
+            const playerChoice = document.getElementById("player-choice").value;
+
+            //Randomly select computer's choice
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            //Determine the result
+            const result = determineWinner(playerChoice, computerChoice);
+
+            //Display the results
+            document.getElementById("player-move").textContent = "You chose: " + playerChoice;
+            document.getElementById("computer-move").textContent = "Computer chose: " + computerChoice;
+            document.getElementById("game-result").textContent = "Result: You " + result + "!";
+        });
     </script>
 </body>
 </html>
